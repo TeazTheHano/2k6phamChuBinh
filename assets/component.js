@@ -37,7 +37,7 @@ export const logoBar = ([w, h], title, environmentColor, profileSoure, icon, fnc
     )
 }
 
-export const searchComponent = (color = colorStyle.iconDefault, backarrow, placeholder, environmentColor, icon, gap, fnc, suggest,) => {
+export const searchComponent = (color = colorStyle.iconDefault, backarrow, placeholder, environmentColor, icon, gap, fnc, suggest, fncSuggest, xbtn) => {
     const [search, setSearch] = React.useState("");
     const [searchBar, setSearchBar] = React.useState(false);
     const navigation = useNavigation();
@@ -68,15 +68,16 @@ export const searchComponent = (color = colorStyle.iconDefault, backarrow, place
                 }
             </View>
             {suggest ?
-                <View style={[styles.flexRow, styles.flexWrap, { gap: vw(2.5) }]}>
+                <View style={[styles.flexRow, styles.flexWrap, { gap: vw(2) }]}>
                     {suggest.map(
                         (item, index) => {
                             return (
                                 <TouchableOpacity
                                     key={index}
-                                    style={[styles.flexRowBetweenCenter, styles.border1, { borderColor: color, borderRadius: vw(6) }]}>
-                                    <Text style={[componentStyle.Mon14Reg, { color: colorStyle.grey }]}>{item}</Text>
-                                    {Xbutton(color, vw(5), vw(5))}
+                                    onPress={fncSuggest}
+                                    style={[styles.flexRowBetweenCenter, { paddingHorizontal: vw(3.5), paddingVertical: vw(1), borderWidth: vw(0.5), borderColor: color, borderRadius: vw(6), borderColor: colorStyle.neu2 }]}>
+                                    <Text style={[componentStyle.nu14Reg140, { color: colorStyle.neu2 }]}>{item}</Text>
+                                    {xbtn ? Xbutton(colorStyle.neu2, vw(5), vw(5)) : null}
                                 </TouchableOpacity>
                             )
                         }

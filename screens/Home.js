@@ -64,27 +64,35 @@ function Home({ navigation }) {
         }
     ]
 
-    let categoryPlaceHolder = [
+    let categoryList = [
         {
             id: 1,
-            name: 'Truyen dan gian',
+            name: 'Truyện dân gian',
         },
         {
             id: 2,
-            name: 'Truyen dan gian',
+            name: 'Truyện cổ tích',
         },
         {
             id: 3,
-            name: 'Truyen dan gian',
+            name: 'Sự tích',
         },
         {
             id: 4,
-            name: 'Truyen dan gian',
+            name: 'Thơ, ca dao tục ngữ',
         },
         {
             id: 5,
-            name: 'Truyen dan gian',
-        }
+            name: 'Bách khoa toàn thư',
+        },
+        {
+            id: 6,
+            name: 'Truyện cười',
+        },
+        {
+            id: 7,
+            name: 'Hát ru/Đồng dao',
+        },
     ]
 
     const [bookmarkStates, setBookmarkStates] = useState(Array(dataPlaceHolder.length).fill(false));
@@ -306,7 +314,7 @@ function Home({ navigation }) {
                             )
                         })
                         :
-                        categoryPlaceHolder.map((item, index) => {
+                        categoryList.map((item, index) => {
                             let bgImage
                             switch (index) {
                                 case 1:
@@ -336,7 +344,7 @@ function Home({ navigation }) {
                         })}
                 </ScrollView>
 
-                
+
                 <View style={[{ backgroundColor: colorStyle.blue, borderTopRightRadius: vw(5), borderTopLeftRadius: vw(5), paddingVertical: vw(4) }]}>
                     <View style={[styles.flexRowBetweenCenter, styles.marginHorizontal5vw, { marginBottom: vw(5) }]}>
                         <Text style={[componentStyle.nu24ExBold140, { color: colorStyle.neu3 }]}>Sách mới</Text>
