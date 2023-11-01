@@ -89,36 +89,58 @@ export const searchComponent = (color = colorStyle.iconDefault, backarrow, place
     )
 }
 
-export const navTopBar = ([w, h], environmentColor, title, item, fnc) => {
+export const navTopBar = ([w, h], strokeColor, environmentColor, titleColor, title, item, fnc) => {
     const navigation = useNavigation();
 
-    return (
-        <View style={[styles.positionRelative, { zIndex: 10 }]}>
-            <View style={[styles.dFlex, styles.flexRow, styles.w100, styles.justifyContentSpaceBetween, styles.gap4vw, styles.alignItemsCenter, { backgroundColor: null, paddingBottom: vw(5), paddingTop: vw(2), paddingHorizontal: vw(6.5), borderBottomRightRadius: vw(5), borderBottomLeftRadius: vw(5) }]}>
-                <TouchableOpacity
-                    style={[{
-                        padding: vw(2), borderRadius: vw(1.5), backgroundColor: null,
-                    },
-                    styles.alignItemsCenter, styles.justifyContentCenter, styles.flexRow,]}
+    if (item) {
+        return (
+            <View style={[styles.positionRelative, { zIndex: 10 }]}>
+                < View style={[styles.dFlex, styles.flexRow, styles.w100, styles.justifyContentSpaceBetween, styles.gap4vw, styles.alignItemsCenter, { backgroundColor: null, paddingBottom: vw(5), paddingTop: vw(2), paddingHorizontal: vw(6.5), borderBottomRightRadius: vw(5), borderBottomLeftRadius: vw(5) }]} >
+                    <TouchableOpacity
+                        style={[{
+                            padding: vw(2), borderRadius: vw(1.5), backgroundColor: null,
+                        },
+                        styles.alignItemsCenter, styles.justifyContentCenter, styles.flexRow,]}
 
-                    onPress={() => { navigation.goBack() }}>
-                    {leftArrow(w, h)}
-                </TouchableOpacity>
+                        onPress={() => { navigation.goBack() }}>
+                        {leftArrow(w, h, strokeColor)}
+                    </TouchableOpacity>
 
-                <Text>{title}</Text>
+                    <Text style={[componentStyle.nu24ExBold140, { color: titleColor }]}>{title}</Text>
 
-                <TouchableOpacity
-                    style={[{
-                        padding: vw(2), borderRadius: vw(1.5), backgroundColor: null,
-                    },
-                    styles.alignItemsCenter, styles.justifyContentCenter, styles.flexRow,]}
-                    onPress={() => { fnc }}>
-                    {item}
-                </TouchableOpacity>
-            </View>
-            <View style={[styles.w100, styles.h100, styles.positionAbsolute, { zIndex: -1, backgroundColor: environmentColor }]}></View>
-        </View>
-    );
+                    <TouchableOpacity
+                        style={[{
+                            padding: vw(2), borderRadius: vw(1.5), backgroundColor: null,
+                        },
+                        styles.alignItemsCenter, styles.justifyContentCenter, styles.flexRow,]}
+                        onPress={() => { fnc }}>
+                        {item}
+                    </TouchableOpacity>
+                </View >
+                <View style={[styles.w100, styles.h100, styles.positionAbsolute, { zIndex: -1, backgroundColor: environmentColor }]}></View>
+            </View >
+        )
+    } else {
+        return (
+            <View style={[styles.positionRelative, { zIndex: 10 }]}>
+                < View style={[styles.dFlex, styles.flexRow, styles.w100, styles.gap4vw, styles.alignItemsCenter, { backgroundColor: null, paddingBottom: vw(5), paddingTop: vw(2), paddingHorizontal: vw(6.5), borderBottomRightRadius: vw(5), borderBottomLeftRadius: vw(5) }]} >
+                    <TouchableOpacity
+                        style={[{
+                            padding: vw(2), borderRadius: vw(1.5), backgroundColor: null,
+                        },
+                        styles.alignItemsCenter, styles.justifyContentCenter, styles.flexRow,]}
+
+                        onPress={() => { navigation.goBack() }}>
+                        {leftArrow(w, h, strokeColor)}
+                    </TouchableOpacity>
+
+                    <Text style={[componentStyle.nu24ExBold140, { color: titleColor }]}>{title}</Text>
+
+                </View >
+                <View style={[styles.w100, styles.h100, styles.positionAbsolute, { zIndex: -1, backgroundColor: environmentColor }]}></View>
+            </View >
+        )
+    }
 }
 
 export const notiModal = (toggle = false, topLeftNormal, centerBig, centerNormal, actionMessage, fnc, onClose) => {

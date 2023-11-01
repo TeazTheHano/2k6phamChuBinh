@@ -189,7 +189,7 @@ function SearchScreen({ navigation }) {
                                                 : selectedFilter.includes(item)
                                                     ? selectedFilter.splice(selectedFilter.indexOf(item), 1)
                                                     : null;
-                                                    
+
                                             console.log(selectedFilter);
                                         }}
                                         style={[styles.flexRowBetweenCenter, { paddingHorizontal: vw(3.5), paddingVertical: vw(1), borderWidth: vw(0.5), borderColor: colorStyle.neu2, borderRadius: vw(6), borderColor: colorStyle.neu2 }]}>
@@ -203,7 +203,7 @@ function SearchScreen({ navigation }) {
                 <ScrollView contentContainerStyle={[styles.flexCol, styles.gap4vw]} style={[styles.flex1,]}>
                     <View style={[styles.flexRow, styles.w100, styles.flexWrap, { rowGap: vw(5) }]}>
                         <Modal
-                            animationType="slide"
+                            animationType='fade'
                             transparent={true}
                             visible={modalVisible}
                             onRequestClose={() => {

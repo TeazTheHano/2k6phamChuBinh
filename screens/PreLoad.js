@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
 import { useCustomFonts } from "../assets/componentStyleSheet";
 import { useNavigation } from '@react-navigation/native';
+
 function PreLoad() {
     let [fontsLoaded] = useCustomFonts();
     const navigation = useNavigation();
@@ -13,6 +14,7 @@ function PreLoad() {
     }, [fontsLoaded]);
 
     function navigateToHome() {
+
         navigation.navigate('Tab');
     }
 
